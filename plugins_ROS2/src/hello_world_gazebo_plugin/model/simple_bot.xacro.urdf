@@ -1,0 +1,21 @@
+<?xml version = "1.0" ?>
+
+<robot name="myfirst">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <gazebo reference = "base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename = "libhello_world_gazebo_plugin.so" name="plugin_test">
+    </plugin>
+  </gazebo>
+</robot>
+

@@ -1,0 +1,65 @@
+<!-- <?xml version="1.0" ?> -->
+<sdf version="1.7">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="box">
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+
+      <plugin name="box_push_plugin" filename="libbox_push_plugin.so"/>
+    </model>  
+
+    <model name="box2">
+      <pose>3 0 5 0 0 0</pose>
+      <link name="link">
+        <collision name="box2_collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+
+        <sensor name='my_contact' type='contact'>
+          <contact>
+            <collision>box2_collision</collision>
+          </contact>
+          <update_rate> 5 </update_rate>
+        </sensor>
+        <! --here -->
+      </link>
+
+    </model>  
+  </world>
+</sdf>
